@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Threading;
 using System.Runtime.InteropServices;
-
+using System.IO;
 
 namespace MouseUtilsRewrite
 {
@@ -419,6 +419,30 @@ namespace MouseUtilsRewrite
         private void label16_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/IkariDevGIT/MouseUtilsRewrite");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            log.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //log.WriteAllText(saveFileDialog1.FileName);
+
+                //Use StreamWriter class.
+                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+
+                //Use write method to write the text
+                sw.Write(log.Text);
+
+                //always close your stream
+                sw.Close();
+            }
+            
+
         }
     }
 
